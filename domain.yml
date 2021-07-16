@@ -1,0 +1,100 @@
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - booking
+  - cleaning
+  - book+room_no
+  - room_no
+  - choose
+  - clean+time
+  - immediate
+  - checkin
+  - checkout
+  - cancelreservation
+  - cancellationpolicy
+  - restaurant
+  - breakfast
+  - breakfasttimings
+  - restauranttimings
+
+entities:
+  - number_of_rooms
+  - room_type
+  - number_of_hours
+
+slots:
+  number_of_rooms:
+    type: text
+  room_type:
+    type: categorical
+    values:
+    - Deluxe
+    - Simple
+  number_of_hours:
+    type: text
+
+actions:
+- utter_greet
+- utter_enquiry_room_no
+- utter_enquiry_room_type
+- utter_confirmation
+- utter_ask_time
+- utter_cleaning_confirm
+- utter_done
+- action_relative
+- utter_checkin
+- utter_checkout
+- utter_cancelreservation
+- utter_cancellationpolicy
+- utter_restaurant
+- utter_breakfast
+- utter_breakfasttimings
+- utter_restauranttimings
+- utter_bye
+
+responses:
+  utter_greet:
+  - text: "Hey! I'm there for hotel service"
+
+  utter_enquiry_room_no:
+  - text: "How many rooms would you like to book?"
+
+  utter_enquiry_room_type:
+  - text: "What type  of rooms would you want to book?"
+    buttons:
+    - title: "Deluxe"
+      payload: '/choose{"room_type": "Deluxe"}'
+    - title: "Simple"
+      payload: '/choose{"room_type": "Simple"}'
+
+  utter_confirmation:
+    - text: "You have chosen to book {number_of_rooms} {room_type} rooms. Confirm?"
+  utter_ask_time:
+    - text: "When should I arrange for a cleaning?"
+  utter_cleaning_confirm:
+    - text: "Sure, I will send someone to your room right away."
+  utter_done:
+  - text: "Booked Successfully!"
+  utter_checkin:
+  - text: "Check-in time starts at 4 PM. Minimum check-in age is 21. Please contact the reception for early check-in requests. "  
+  utter_checkout:
+  - text: "Check-out time is 11 AM. Please contact the reception for late checkout requests. "
+  utter_cancelreservation:
+  - text: "To cancel a reservation, select the “Reservations” link from the homepage."
+  utter_cancellationpolicy:
+  - text: "The booking deposit is refundable if the cancellation occurs at least 15 days before arrival. For cancellations made after this limit, a penalty will be imposed based on the cancellation policy. "
+  utter_restaurant:
+  - text: "Yes, the hotel has a restaurant called the Zephyr Bar. With our menu we strive to reflect the historic art and the spirit of our neighborhood by offering a glimpse into what makes our area unique. "
+  utter_breakfast:
+  - text: "The hotel provides its guests with a free made-to-order breakfast each morning. "
+  utter_breakfasttimings:
+  - text: "Monday through Friday breakfast is 6 am to 9 am. On Saturday and Sunday, we are open from 7 am to 10:30 am. "
+  utter_restauranttimings:
+  - text: "Our restaurant serves a dazzling 24-hour menu. "
+  utter_bye:
+  - text: "Good bye! Have a great day ahead!"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
